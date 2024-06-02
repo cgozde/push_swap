@@ -1,0 +1,102 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cuyar <cuyar@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/02 16:21:49 by cuyar             #+#    #+#             */
+/*   Updated: 2024/06/02 16:48:47 by cuyar            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	select_sort(t_stack **stack_a, t_stack **stack_b, int len)
+{
+	if (len == 2)
+		sa(stack_a);
+	if (len == 3)
+		sort_3(stack_a);
+	if (len == 4)
+		sort_4(stack_a, stack_b);
+	if (len == 5)
+		sort_5(stack_a, stack_b);
+	if (len > 5)
+		radix_bin(stack_a, stack_b);
+}
+
+int	find_min(t_stack **stack_a)
+{
+	t_stack	*temp;
+	int		min;
+
+	temp = *stack_a;
+	min = (*stack_a)->value;
+	while (temp)
+	{
+		if (min > temp->value)
+			min = temp->value;
+		temp = temp->next;
+	}
+	return (min);
+}
+
+void	sort_3(t_stack **stack_a)
+{
+	index_setter(stack_a);
+	if ((*stack_a)->index == 2)
+		ra(stack_a);
+	else if((*stack_a)->next->index == 2)
+		rra(stack_a);
+	if (!is_sorted(stack_a))
+		sa(stack_a);
+}
+
+void	sort_4(t_stack **stack_a, t_stack **stack_b)
+{
+	int		min;
+	t_stack	*temp;
+	int		len;
+
+	len = stack_size(stack_a);
+	min = find_min(stack_a);
+	temp = *stack_a;
+	while (len > 0)
+	{
+		temp = *stack_a;
+		if (temp->value == min)
+		{
+			pb(stack_b, stack_a);
+			break ;
+		}
+		rra(stack_a);
+		len--;
+	}
+	sort_3(stack_a);
+	pa(stack_a, stack_b);
+}
+
+void sort_5(t_stack **stack_a, t_stack **stack_b)
+{
+	int		min;
+	t_stack	*temp;
+	int		len;
+
+	len = stack_size(stack_a);
+	min = find_min(stack_a);
+	temp = *stack_a;
+	while (len > 0)
+	{
+		temp = *stack_a;
+		if (temp->value == min)
+		{
+			pb(stack_b, stack_a);
+			break ;
+		}
+		rra(stack_a);
+		len--;
+	}
+	sort_4(stack_a, stack_b);
+	pa(stack_a, stack_b);
+}
