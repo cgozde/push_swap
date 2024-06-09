@@ -47,7 +47,7 @@ void	sort_3(t_stack **stack_a)
 	index_setter(stack_a);
 	if ((*stack_a)->index == 2)
 		ra(stack_a);
-	else if((*stack_a)->next->index == 2)
+	else if ((*stack_a)->next->index == 2)
 		rra(stack_a);
 	if (!is_sorted(stack_a))
 		sa(stack_a);
@@ -77,7 +77,7 @@ void	sort_4(t_stack **stack_a, t_stack **stack_b)
 	pa(stack_a, stack_b);
 }
 
-void sort_5(t_stack **stack_a, t_stack **stack_b)
+void	sort_5(t_stack **stack_a, t_stack **stack_b)
 {
 	int		min;
 	t_stack	*temp;

@@ -19,7 +19,7 @@ void	space_check(const char *str)
 
 	i = 0;
 	j = 0;
-	while(str[j])
+	while (str[j])
 	{
 		if (str[j] == ' ')
 		{
@@ -31,7 +31,7 @@ void	space_check(const char *str)
 		exit(0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_stack	**stack_a;
 	t_stack	**stack_b;
@@ -50,6 +50,6 @@ int main(int ac, char **av)
 		return (0);
 	set_neg(stack_a);
 	len = stack_size(stack_a);
-	
-	
+	select_sort(stack_a, stack_b, len);
+	return (0);
 }

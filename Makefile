@@ -3,7 +3,7 @@ NAME = push_swap
 SRC = radix_bin.c error.c push_swap.c sort.c stack.c \
 	  instructions0.c instructions1.c instructions2.c instructions3.c \
 
-OBJS = $(SRC:.c=.c)
+OBJS = $(SRC:.c=.o)
 
 CC = gcc
 
@@ -14,16 +14,19 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		@$(MAKE) -C ./libft
-		@$(CC) $(CFLAGS) $(OBJS) ./libft/libft.a -o $(NAME)
+		 make -C ./libft
+		 $(CC) $(CFLAGS) $(OBJS) ./libft/libft.a -o $(NAME)
+		 
+%.o: %.c
+		$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 		make clean -C libft
-		@$(RM) *.o
+		$(RM) $(OBJS)
 
 fclean: clean
 		make fclean -C libft
-		@$(RM) $(NAME)
+		$(RM) $(NAME)
 
 re: fclean all
 

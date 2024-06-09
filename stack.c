@@ -14,24 +14,23 @@
 
 void	convert_input(t_stack **stack_a, char *av)
 {
-	int	i;
+	int		i;
 	char	**converted;
 	t_stack	*node;
 
 	i = 0;
 	converted = ft_split(av, ' ');
-	while(converted[i])
+	while (converted[i])
 	{
 		node = ft_lstnew(ft_atoi(converted[i]));
 		ft_lstadd_back(stack_a, node);
 		i++;
 	}
 	i = 0;
-	while(converted[i])
-		free(converted[i++]);//önce parçalar freelenir
-	free(converted);//sonra da dizinin kendisi freelenir
+	while (converted[i])
+		free(converted[i++]);
+	free(converted);
 }
-
 
 void	create_stack(t_stack **stack_a, char **av)
 {
@@ -39,7 +38,7 @@ void	create_stack(t_stack **stack_a, char **av)
 	int		i;
 
 	i = 1;
-	while(av[i])
+	while (av[i])
 	{
 		if (ft_strrchr(av[i], ' ') != NULL)
 		{
@@ -67,7 +66,7 @@ int	is_sorted(t_stack **stack_a)
 	temp = *stack_a;
 	while (temp->next)
 	{
-		if(temp->value < temp->next->value)
+		if (temp->value < temp->next->value)
 			i++;
 		temp = temp->next;
 	}
@@ -92,14 +91,13 @@ int	stack_size(t_stack **stack_a)
 {
 	t_stack	*tmp;
 	int		len;
-	
+
 	tmp = *stack_a;
 	len = 0;
-	while(tmp)
+	while (tmp)
 	{
 		tmp = tmp->next;
 		len++;
 	}
 	return (len);
 }
-

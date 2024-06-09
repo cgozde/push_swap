@@ -21,12 +21,13 @@ void	ft_error(t_stack **stack)
 		tmp = (*stack)->next;
 		while (tmp)
 		{
-			if((*stack)->value == tmp->value)
+			if ((*stack)->value == tmp->value)
 			{
 				write(2, "Error\n", 6);
 				exit(0);
 			}
-			stack = &(*stack)->next; //stack bir sonraki elemanın adresini tutacak şekilde güncellenir
+			tmp = tmp->next;
 		}
+		stack = &(*stack)->next;
 	}
 }

@@ -15,7 +15,7 @@
 void	rotate(t_stack **stack)
 {
 	t_stack	*start;
-	t_stack *end;
+	t_stack	*end;
 
 	if (ft_lstsize(*stack) < 2)
 		return ;

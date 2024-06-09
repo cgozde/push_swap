@@ -18,7 +18,7 @@ void	swap(t_stack **stack)
 
 	if (ft_lstsize(*stack) < 2)
 		return ;
-	tmp = (*stack)->next; //stack yığınının ikinci elemanı tmpye atılır
+	tmp = (*stack)->next;
 	(*stack)->next = tmp->next;
 	tmp->next = *stack;
 	*stack = tmp;
@@ -38,7 +38,7 @@ void	sb(t_stack **stack_b)
 
 void	ss(t_stack **stack_a, t_stack **stack_b)
 {
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b)))
+	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
 		return ;
 	swap(stack_a);
 	swap(stack_b);

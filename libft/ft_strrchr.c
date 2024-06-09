@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-char *ft_strrchr(const char *str, int c)
+char	*ft_strrchr(const char *str, int c)
 {
 	int	i;
 

@@ -23,7 +23,7 @@ t_stack	*find_min2(t_stack **stack_a)
 	min = NULL;
 	while (temp)
 	{
-		if((!x || temp->value < min->value) && (temp->index == -1))
+		if ((!x || temp->value < min->value) && (temp->index == -1))
 		{
 			x = 1;
 			min = temp;
@@ -36,7 +36,7 @@ t_stack	*find_min2(t_stack **stack_a)
 void	index_setter(t_stack **stack_a)
 {
 	t_stack	*min;
-	int 	i;
+	int		i;
 
 	min = find_min2(stack_a);
 	i = 0;
@@ -55,19 +55,19 @@ void	radix_bin(t_stack **stack_a, t_stack **stack_b)
 
 	push = 0;
 	index_setter(stack_a);
-	while(!is_sorted(stack_a))
+	while (!is_sorted(stack_a))
 	{
 		len = ft_lstsize(*stack_a);
 		while (len)
 		{
-			if((((*stack_a)->index >> push) & 1) == 0)
+			if ((((*stack_a)->index >> push) & 1) == 0)
 				pb(stack_b, stack_a);
 			else
 				ra(stack_a);
 			len--;
 		}
 		push++;
-		while(*stack_b)
+		while (*stack_b)
 			pa(stack_a, stack_b);
 	}
 }

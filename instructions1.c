@@ -14,22 +14,22 @@
 
 void	push(t_stack **src, t_stack **dst)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
-	if(ft_lstsize(*src) == 0)//kaynak yığının boyutu 0 ise fonksiyondan çık
+	if (ft_lstsize(*src) == 0)
 		return ;
-	tmp = *src; //ilk elemanı tmp'ye ata
-	*src = (*src)->next; //kaynağın ikinci elemanı ilk eleman olarak güncellenir
-	ft_lstadd_front(dst, tmp);//tmpdeki elemanı dst'nin başına ekler
+	tmp = *src;
+	*src = (*src)->next;
+	ft_lstadd_front(dst, tmp);
 }
 
-void	pa(t_stack **src_b, t_stack **dst_a)
+void	pa(t_stack **dst_a, t_stack **src_b)
 {
 	push(src_b, dst_a);
-	write(1, "pa\n",3);
+	write(1, "pa\n", 3);
 }
 
-void	pb(t_stack **src_a, t_stack **dst_b)
+void	pb(t_stack **dst_b, t_stack **src_a)
 {
 	push(src_a, dst_b);
 	write(1, "pb\n", 3);
