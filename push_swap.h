@@ -6,7 +6,7 @@
 /*   By: cuyar <cuyar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:45:13 by cuyar             #+#    #+#             */
-/*   Updated: 2024/06/02 20:25:24 by cuyar            ###   ########.fr       */
+/*   Updated: 2024/06/12 21:56:34 by cuyar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		stack_size(t_stack **stack_a);
 void	ft_error(t_stack **stack);
 
 void	space_check(const char *str);
+void	num_check(int ac, char **av);
 
 t_stack	*find_min2(t_stack **stack_a);
 void	index_setter(t_stack **stack_a);

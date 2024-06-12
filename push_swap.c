@@ -6,7 +6,7 @@
 /*   By: cuyar <cuyar@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 15:59:46 by cuyar             #+#    #+#             */
-/*   Updated: 2024/06/02 16:20:47 by cuyar            ###   ########.fr       */
+/*   Updated: 2024/06/12 21:53:57 by cuyar            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,22 @@ void	space_check(const char *str)
 		exit(0);
 }
 
+void	num_check(int ac, char **av)
+{
+	int	i;
+
+	i = 0;
+	while (i < ac)
+	{
+		if (av[i][0] == '\0')
+		{
+			write(2, "Error\n", 6);
+			exit(0);
+		}
+		i++;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	**stack_a;
@@ -40,6 +56,7 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
+	num_check(ac, av);
 	stack_a = (t_stack **)malloc(sizeof(t_stack *));
 	stack_b = (t_stack **)malloc(sizeof(t_stack *));
 	*stack_a = NULL;
